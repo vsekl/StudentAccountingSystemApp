@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_marks_description
+      author: Vsevolod
+      changes:
+        - sql:
+            sql: CREATE TABLE marks_description(
+              id SERIAL PRIMARY KEY,
+              mark SMALLINT UNIQUE CHECK(mark >= 2 AND mark <= 5),
+              description VARCHAR(50) NOT NULL
+              );

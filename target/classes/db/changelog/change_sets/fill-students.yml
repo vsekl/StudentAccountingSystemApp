@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: fill_students
+      author: Vsevolod
+      changes:
+        - sql:
+            sql: INSERT INTO students (firstname, lastname, age, group_id)
+              VALUES
+              ('Vasiliy', 'Vasiliev', 20, 3),
+              ('Andrey', 'Andreev', 18, 5),
+              ('Ivan', 'Ivanov', 17, 1),
+              ('Tatyana', 'Tatyanova', 19, 2),
+              ('Ekaterina', 'Ekaterinina', 21, 2),
+              ('Ivan', 'Popov', 18, 3),
+              ('Ivan', 'Vasiliev', 17, 1);
