@@ -16,9 +16,14 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @PostMapping()
+    //ЭТО НЕ ПОСТ МЕТОД, НО КАК СДЕЛАТЬ ДВА ПОСТ МЕТОДА?
+    @GetMapping()
     public List<Student> getStudents(@RequestBody StudentRequest request) {
         return studentService.getStudents(request);
+    }
+    @GetMapping("/wtf")
+    public StudentRequest retReq(){
+        return new StudentRequest();
     }
 
     @PostMapping()
