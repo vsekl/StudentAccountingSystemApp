@@ -1,14 +1,11 @@
 package ru.vsevakl.accounting.controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import ru.vsevakl.accounting.custom.MaxSequence;
 import ru.vsevakl.accounting.domain.Mark;
-import ru.vsevakl.accounting.domain.dto.DisciplineToAvgMark;
 import ru.vsevakl.accounting.repository.MarkRepository;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,36 +30,37 @@ public class MarkController {
     }
 
     @GetMapping("/stats")
-//    public List<List<String[]>> markStatistics() {
-    public List<DisciplineToAvgMark> markStatistics() {
-        List<DisciplineToAvgMark> stats = markRepository.avgGradeAtEveryDiscipline();
-
-//        List<List<String[]>> stats = new ArrayList<>();
-//        stats.add(markRepository.avgGradeAtEveryDiscipline());
-//        stats.add(markRepository.minMaxGradeAtEveryDiscipline());
-//        stats.add(markRepository.countAllMarksByGrade());
-//        stats.add(findMaxSequence(markRepository.findAllBetweenDatesOrderByDate(),markRepository.findMaxGrade()));
+    public List<List<?>> markStatistics() {
+        List<List<?>> stats = new ArrayList<>();
+        stats.add(markRepository.avgGradeAtEveryDiscipline());
+        stats.add(markRepository.minMaxGradeAtEveryDiscipline());
+        stats.add(markRepository.countAllMarksByGrade());
+        stats.add(findMaxSequence(markRepository.findAllBetweenDatesOrderByDate()));
         return stats;
     }
 
-    private List<String[]> findMaxSequence(List<Mark> marks, Long maxGradeId) {
-        int max=0;
+    private List<MaxSequence> findMaxSequence(List<Mark> marks) {
+        long maxGrade=0;
+        int maxSequence=0;
         int counter=0;
-        List<String[]> list = new ArrayList<>();
-        String[] res = new String[1];
 
-        if (maxGradeId == null)
+        if (marks == null)
             return null;
         for(Mark mark : marks) {
-            if (mark.getId().equals(maxGradeId))
+            if(mark.getMarkDescriptionId() > maxGrade) {
+                maxGrade = mark.getMarkDescriptionId();
+                maxSequence = 1;
+                counter = 1;
+            }
+            else if (mark.getMarkDescriptionId() == maxGrade)
                 counter++;
             else {
-                max = Math.max(max, counter);
+                maxSequence = Math.max(maxSequence, counter);
                 counter = 0;
             }
         }
-        res[0] = Integer.toString(max);
-        list.add(res);
-        return list;
+        List<MaxSequence> res = new ArrayList<>();
+        res.add(new MaxSequence(maxGrade, Math.max(maxSequence, counter)));
+        return res;
     }
 }
