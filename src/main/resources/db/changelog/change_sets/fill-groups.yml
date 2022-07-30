@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: fill_groups
+      author: Vsevolod
+      changes:
+        - sql:
+            sql: INSERT INTO groups (name)
+              VALUES
+              ('A-01-22'),
+              ('A-02-22'),
+              ('A-03-22'),
+              ('B-01-22'),
+              ('B-02-22'),
+              ('C-01-22'),
+              ('C-02-22'),
+              ('D-01-22');

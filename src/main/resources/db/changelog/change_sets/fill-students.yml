@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: fill_students
+      author: Vsevolod
+      changes:
+        - sql:
+            sql: INSERT INTO students (firstname, lastname, age, group_id)
+              VALUES
+              ('Vasiliy', 'Vasiliev', 20, 3),
+              ('Andrey', 'Andreev', 18, 5),
+              ('Ivan', 'Ivanov', 17, 1),
+              ('Sergey', 'Sergeev', 22, 8),
+              ('Antoliy', 'Rezin', 20, 7),
+              ('Tatyana', 'Tatyanova', 19, 2),
+              ('Ekaterina', 'Ekaterinina', 21, 2),
+              ('Ivan', 'Popov', 18, 3),
+              ('Oleg', 'Panin', 22, 4),
+              ('Oleg', 'Popov', 17, 1),
+              ('Natalya', 'Bugaeva', 23, 2),
+              ('Egor', 'Egorov', 19, 6),
+              ('Viktor', 'Dorogin', 23, 7),
+              ('Ludmila', 'Afanasieva', 20, 8),
+              ('Artem', 'Artemov', 19, 7),
+              ('Vasiliy', 'Bedin', 23, 2),
+              ('Vladislav', 'Petrov', 18, 2),
+              ('Igor', 'Bessmertniy', 24, 4),
+              ('Marina', 'Bugaeva', 22, 5),
+              ('Maria', 'Panina', 23, 4),
+              ('Dmitry', 'Egorov', 25, 5),
+              ('Nikita', 'Belov', 22, 3),
+              ('Artur', 'Koroloev', 18, 4),
+              ('Valeria', 'Pobeda', 19, 8),
+              ('Konstantin', 'Repin', 20, 5),
+              ('Viktoria', 'Hrustaleva', 23, 1),
+              ('Anastasia', 'Panina', 19, 3),
+              ('Vasilisa', 'Prekrasnaya', 22, 8),
+              ('Ivan', 'Vasiliev', 17, 1);

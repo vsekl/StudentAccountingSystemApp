@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_marks
+      author: Vsevolod
+      changes:
+        - sql:
+            sql: CREATE TABLE marks(
+              id SERIAL PRIMARY KEY,
+              date DATE NOT NULL,
+              discipline_id INTEGER REFERENCES disciplines (id) NOT NULL,
+              student_id INTEGER REFERENCES students (id) NOT NULL,
+              mark_id INTEGER REFERENCES marks_description (id) NOT NULL
+              );

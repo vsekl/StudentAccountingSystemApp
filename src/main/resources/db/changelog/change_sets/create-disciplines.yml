@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_disciplines
+      author: Vsevolod
+      changes:
+        - sql:
+            sql: CREATE TABLE disciplines(
+              id SERIAL PRIMARY KEY,
+              name VARCHAR(30) NOT NULL UNIQUE
+              );

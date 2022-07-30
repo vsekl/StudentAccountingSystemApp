@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: fill_marks_description
+      author: Vsevolod
+      changes:
+        - sql:
+            sql: INSERT INTO marks_description (mark, description)
+              VALUES
+              (2, 'Fail'),
+              (3, 'Satisfactory'),
+              (4, 'Good'),
+              (5, 'Excellent');
