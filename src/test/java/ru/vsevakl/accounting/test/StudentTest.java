@@ -23,6 +23,17 @@ public class StudentTest extends ContainersEnvironment {
     StudentController studentController;
 
     @Test
+    public void addStudentTest() {
+        Student student = new Student(10L, "Olga", "Tarasova", 20L, 2L);
+        List<Student> expected = studentController.getStudents(null);
+
+        expected.add(student);
+        studentController.addStudent(student);
+
+        Assertions.assertThat(expected).usingRecursiveComparison().isEqualTo(studentController.getStudents(null));
+    }
+
+    @Test
     public void getStudentsEmptyRequestBodyTest() {
         List<Student> students = new ArrayList<>();
         students.add(new Student(1L,"Vasiliy", "Vasiliev", 20L, 3L));

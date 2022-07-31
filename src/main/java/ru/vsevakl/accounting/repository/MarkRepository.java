@@ -8,7 +8,6 @@ import ru.vsevakl.accounting.dto.DisciplineMinMax;
 import ru.vsevakl.accounting.dto.GradeNumber;
 import ru.vsevakl.accounting.domain.Mark;
 import java.util.List;
-// TODO: 31.07.2022 actualize
 
 @Repository
 public interface MarkRepository extends JpaRepository<Mark, Long> {
